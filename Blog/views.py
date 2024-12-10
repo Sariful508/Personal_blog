@@ -7,13 +7,18 @@ from django.http import HttpResponseRedirect
 from Blog.forms import CommentForm
 
 
-def blog_index(request):
-    posts = Post.objects.all().order_by("-created_on")
-    context = {
-        "posts": posts,
-    }
-    return render(request, "index.html", context)
+#def blog_index(request):
+ #   posts = Post.objects.all().order_by("-created_on")
+  #  context = {
+   #     "posts": posts,
+    #}
+   # return render(request, "index.html", context)
 
+def blog_index(request):
+    category_name = "Place"  # Ensure this matches your URL pattern
+    context = {"category_name": category_name}
+    return render(request, "index.html", context)
+#end for test 
 
 def blog_category(request, category):
     posts = Post.objects.filter(
@@ -45,4 +50,4 @@ def blog_detail(request, pk):
          "form": CommentForm(),
     }
 
-    return render(request, "detail.html", context)
+    return render(request, "details.html", context)

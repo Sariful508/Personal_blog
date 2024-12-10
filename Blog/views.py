@@ -20,7 +20,7 @@ def blog_index(request):
     return render(request, "index.html", context)
 #end for test 
 
-def blog_category(request, category):
+def blog_category(request, category): 
     posts = Post.objects.filter(
         categories__name__contains=category
     ).order_by("-created_on")
